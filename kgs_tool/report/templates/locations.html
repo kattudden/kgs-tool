@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class=header>
+        <p>KGS Langnau</p>
+    </div>
+
+    {% if locations %}
+        <div class=location_overview>
+            <table id="tbl_loc_ov">
+                <tr>
+                    <th>ID</td>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+                    {% for location in locations %}
+                        <tr data-href="/report/{{ location.id }}/">
+                            <td>{{ location.id }}</td>
+                            <td>{{ location.name }}</td>
+                            <td class=TblLocOvImg><img src="{{ MEDIA_URL }}{{ location.bild }}" alt="Bild nicht gefunden." class='tbl_loc_ov'></img></td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+
+    {% else %}
+        <h1>Keine Objekte erfasst.</h1>
+    {% endif %}
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const rows = document.querySelectorAll("tr[data-href]");
+
+            rows.forEach(row => {
+                row.addEventListener("click", () => {
+                    window.location.href = row.dataset.href;
+                });
+            });
+        });
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<!-- Location -->
+{% if location %}
+<div class=page>
+    <div class=left_space>
+    </div>
+    <div class=header>
+        <div class=header-left>
+            <p class=headerTitle>{{ location.id }} / {{ location.name }}</p>
+        </div>
+        <div class=header-center>
+            <img src="{% static 'kgs_logo.png' %}" class=kgslogo>
+        </div>
+        <div class=header-right>
+            <p class=headerInfo>{{ location.aufgenommen_am }}</p>
+            <p class=headerInfo>KGS Langnau</p>
+        </div>
+    </div>
+    <div class=content>
+
+        <div class=locationInfo>
+            <div class=locationAddress>
+                <h3>Adresse</h3>
+                <table id=tbl_clean>
+                    <tr>
+                        <td>Baugruppe</td>
+                        <td>{{ location.id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Gemeinde</td>
+                        <td>{{ location.gemeinde }}</td>
+                    </tr>
+                    <tr>
+                        <td>Plz</td>
+                        <td>{{ location.plz }}</td>
+                    </tr>
+                    <tr>
+                        <td>Strasse</td>
+                        <td>{{ location.strasse }}</td>
+                    </tr>
+                    <tr>
+                        <td>Koordinaten</td>
+                        <td>{{ location.koordinaten }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class=locationImg>
+                <img src="{{ MEDIA_URL }}{{location.bild}}" class=locationImg></img>
+            </div>
+        </div>
+
+        <div class=shell>
+            <h3>Kontaktdaten</h3>
+            <table id=tbl_contacts>
+                <tr>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Bemerkungen</th>
+                </tr>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{contact.nachname}} {{ contact.vorname }}</td>
+                        <td>{{contact.mobile}}</td>
+                        <td>{{contact.bemerkungen}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class=shell>
+            <h3>Gebäude</h3>
+            <table id=tbl_buildings>
+                <tr>
+                    <th>Name</th>
+                    <th>Strasse</th>
+                    <th>Hausnummer</th>
+                </tr>
+                {% for building in buildings %}
+                    <tr>
+                        <td>{{building.name}}</td>
+                        <td>{{location.strasse}}</td>
+                        <td>{{building.hausnummer}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class=shell>
+            <h3>Baugruppe {{location.id}}</h3>
+            <div class=img_large>
+                <img src="{{ MEDIA_URL }}{{location.karte}}" class=large></img>
+            </div>
+        </div>
+
+    </div>
+    <!-- Page Break -->
+    <p style="page-break-after: always;">&nbsp;</p>
+</div>
+
+{% for building in buildings %}
+
+<div class=page>
+    <div class=left_space>
+    </div>
+    <div class=header>
+        <div class=header-left>
+            <p class=headerTitle>{{ location.id }} / {{ building.name }}</p>
+        </div>
+        <div class=header-center>
+            <img src="{% static 'kgs_logo.png' %}" class=kgslogo>
+        </div>
+        <div class=header-right>
+            <p class=headerInfo>{{ location.aufgenommen_am }}</p>
+            <p class=headerInfo>KGS Langnau</p>
+        </div>
+    </div>
+    <div class=content>
+
+        <div class=locationInfo>
+            <div class=locationAddress>
+                <h3>Gebäude {{building.name}}</h3>
+                <table id=tbl_clean>
+                    <tr>
+                        <td>Baugruppe</td>
+                        <td>{{ location.id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Gemeinde</td>
+                        <td>{{ location.gemeinde }}</td>
+                    </tr>
+                    <tr>
+                        <td>Plz</td>
+                        <td>{{ location.plz }}</td>
+                    </tr>
+                    <tr>
+                        <td>Strasse</td>
+                        <td>{{ location.strasse }}</td>
+                    </tr>
+                    <tr>
+                        <td>Hausnummer</td>
+                        <td>{{ building.hausnummer }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class=locationImg>
+                <img src="{{ MEDIA_URL }}{{building.bild}}" class=locationImg></img>
+            </div>
+        </div>
+
+        <div class=shell>
+            <h3>Stockwerke / Räume</h3>
+            <table id=tbl_buildings>
+                <tr>
+                    <th>Name</th>
+                </tr>
+                {% for room in rooms %}
+                    <tr>
+                        <td>{{room.name}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class=shell>
+            <h3>Karte {{building.name}}</h3>
+            <div class=img_large>
+                <img src="{{ MEDIA_URL }}{{building.karte}}" class=large></img>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Page Break -->
+    <p style="page-break-after: always;">&nbsp;</p>
+
+</div>
+
+    {% for room in rooms %}
+    {% if room.building.id == building.id %}
+
+        <div class=page>
+            <div class=left_space>
+            </div>
+            <div class=header>
+                <div class=header-left>
+                    <p class=headerTitle>{{room.name }}</p>
+                </div>
+                <div class=header-center>
+                    <img src="{% static 'kgs_logo.png' %}" class=kgslogo>
+                </div>
+                <div class=header-right>
+                    <p class=headerInfo>{{ location.aufgenommen_am }}</p>
+                    <p class=headerInfo>KGS Langnau</p>
+                </div>
+            </div>
+            <div class=content>
+
+                <div class=shell>
+                    <h3>Karte {{room.name}}</h3>
+                    <div class=img_large>
+                        <img src="{{ MEDIA_URL }}{{room.karte}}" class=large></img>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Page Break -->
+            <p style="page-break-after: always;">&nbsp;</p>
+
+        </div>
+
+        {% for item in items %}
+        {% if item.room.id == room.id %}
+
+            <div class=page>
+                <div class=left_space>
+                </div>
+                <div class=header>
+                    <div class=header-left>
+                        <p class=headerTitle>{{item.id}}</p>
+                    </div>
+                    <div class=header-center>
+                        <img src="{% static 'kgs_logo.png' %}" class=kgslogo>
+                    </div>
+                    <div class=header-right>
+                        <p class=headerInfo>{{ location.aufgenommen_am }}</p>
+                        <p class=headerInfo>KGS Langnau</p>
+                    </div>
+                </div>
+                <div class=content>
+
+                    <div class=shell>
+                        <h3>Kulturgut Informationen</h3>
+                        <div class=itemInfo>
+                            <table id=tbl_clean>
+                                <tr>
+                                    <td><b>Kulturgut</b></td>
+                                    <td>{{ item.name }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Lage</b></td>
+                                    <td>{{ item.lage }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Priorität</b></td>
+                                    <td>
+                                        {% if item.priority == 1 %}
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        {% elif item.priority == 2 %}
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        {% elif item.priority == 3 %}
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        {% elif item.priority == 4 %}
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star"></span>
+                                        {% else %}
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Beschreibung</b></td>
+                                    <td>{{ item.beschreibung }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Masse</b></td>
+                                    <td>Höhe: {{ item.hoehe }}cm, Breite: {{ item.breite }}cm, Tiefe: {{ item.tiefe}}cm</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Gefahren</b></td>
+                                    <td>
+                                        <div class=gefahren>
+                                            <div class=gefahren_pic>
+                                                {% if item.feuer %}
+                                                    <div class=header-center>
+                                                        <img src="{% static 'feuer.png' %}" class=gefahren_pic>
+                                                    </div>
+                                                {% else %}
+                                                    <div class=header-center>
+                                                        <img src="{% static 'nfeuer.png' %}" class=gefahren_pic>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class=gefahren_pic>
+                                                {% if item.wasser %}
+                                                    <div class=header-center>
+                                                        <img src="{% static 'wasser.png' %}" class=gefahren_pic>
+                                                    </div>
+                                                {% else %}
+                                                    <div class=header-center>
+                                                        <img src="{% static 'nwasser.png' %}" class=gefahren_pic>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class=gefahren_pic>
+                                                {% if item.schmutz %}
+                                                    <div class=header-center>
+                                                        <img src="{% static 'schmutz.png' %}" class=gefahren_pic>
+                                                    </div>
+                                                {% else %}
+                                                    <div class=header-center>
+                                                        <img src="{% static 'nschmutz.png' %}" class=gefahren_pic>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class=gefahren_pic>
+                                                {% if item.gewalt %}
+                                                    <div class=header-center>
+                                                        <img src="{% static 'gewalt.png' %}" class=gefahren_pic>
+                                                    </div>
+                                                {% else %}
+                                                    <div class=header-center>
+                                                        <img src="{% static 'ngewalt.png' %}" class=gefahren_pic>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>Massnahmen</b></td>
+                                    <td>{{ item.massnahmen }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Personal</b></td>
+                                    <td>{{ item.personal }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Material</b></td>
+                                    <td>{{ item.material }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>Evakuation</b></td>
+                                    <td>{{ item.evakuation }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class=shell>
+                        <h3>Evakuationsplan</h3>
+                        <div class=img_large>
+                            <img src="{{ MEDIA_URL }}{{item.plan}}" class=large></img>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page Break -->
+                <p style="page-break-after: always;">&nbsp;</p>
+
+            </div>
+
+            <div class=page>
+                <div class=left_space>
+                </div>
+                <div class=header>
+                    <div class=header-left>
+                        <p class=headerTitle>{{item.id}}</p>
+                    </div>
+                    <div class=header-center>
+                        <img src="{% static 'kgs_logo.png' %}" class=kgslogo>
+                    </div>
+                    <div class=header-right>
+                        <p class=headerInfo>{{ location.aufgenommen_am }}</p>
+                        <p class=headerInfo>KGS Langnau</p>
+                    </div>
+                </div>
+                <div class=content>
+                    <div class=shell>
+                        <h3>{{item.id}} Bild</h3>
+                        <div class=img_object>
+                            <img src="{{ MEDIA_URL }}{{item.bild}}" class=large></img>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page Break -->
+                <p style="page-break-after: always;">&nbsp;</p>
+            </div>
+
+        {% endif %}
+        {% endfor %}
+            
+    {% endif %}
+    {% endfor %}
+        
+{% endfor %}
+
+{% else %}
+<h2>Nothing to see here...</h2>
+
+{% endif %}
+
+{% endblock %}

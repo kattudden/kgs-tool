@@ -1,0 +1,243 @@
+div.page {
+    width: 19cm;
+    height: 28.6cm;
+    margin-left: 1.5cm;
+    border-left: 1px dashed black;
+}
+
+div.content {
+    width: auto;
+    height: auto;
+    margin-left: 0.5cm;
+    margin-right: 0.75cm;
+    margin-top: 0.2cm;
+    background-color: white;
+}
+
+div.shell {
+    width: 100%;
+    height: auto;
+}
+
+div.location_overview {
+    width: auto;
+    height: auto;
+    margin-left: 0.5cm;
+    margin-right: 0.75cm;
+}
+
+
+#tbl_loc_ov {
+    width: 100%;
+    margin-top: 30px;
+}
+
+#tbl_loc_ov tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#tbl_loc_ov tr:hover {
+    background-color: #ddd;
+}
+
+#tbl_loc_ov th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: blue;
+    color: white;
+}
+
+img.tbl_loc_ov {
+    width: 500px;
+    height: auto;
+}
+
+td.TblLocOvImg {
+    text-align: right;
+}
+
+
+div.locationInfo {
+    width: 100%;
+    height: auto;
+    margin-top: 0.5cm;
+    display: flex;
+}
+
+div.locationAddress {
+    width: 60%;
+    height: auto;
+}
+
+div.itemInfo {
+    width: 100%;
+    height: auto;
+}
+
+div.locationImg {
+    display: flex;
+    width: 40%;
+    height: auto;
+}
+
+img.locationImg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#tbl_clean {
+    width: 100%;
+}
+
+#tbl_clean td {
+    text-align: left;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid black;
+}
+
+
+div.header {
+    width: auto;
+    height: 50px;
+    margin-left: 0.5cm;
+    margin-top: 0.5cm;
+    margin-right: 0.75cm;
+    border: 1px solid black;
+    background-color: blue;
+    color: white;
+    display: flex;
+}
+
+div.header-left {
+    width: 33%;
+    text-align: center;
+    margin-left: 5px;
+}
+
+div.header-center {
+    width: 33%;
+    text-align: center;
+    background-color: lightgrey;
+}
+
+div.header-right {
+    width: 33%;
+    margin-right: 5px;
+    text-align: right;
+}
+
+p.headerTitle {
+    font-size: large;
+}
+
+p.headerInfo {
+    font-size: x-small;
+}
+
+img.kgslogo {
+    max-height: 100%;
+}
+
+
+div.contacts {
+    width: 100%;
+    height: auto;
+}
+
+#tbl_contacts {
+    width: 100%;
+}
+
+#tbl_contacts th {
+    text-align: left;
+    style: bold;
+    border-bottom: solid black;
+}
+
+#tbl_contacts td {
+    text-align: left;
+    border-bottom: solid black;
+}
+
+#tbl_buildings {
+    width: 100%;
+}
+
+#tbl_buildings th {
+    text-align: left;
+    style: bold;
+    border-bottom: solid black;
+}
+
+#tbl_buildings td {
+    text-align: left;
+    border-bottom: solid black;
+}
+
+div.img_large {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    border: solid black;
+}
+
+div.img_object {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    align: center;
+    border: solid black;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+img.large {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.img_large_flipped {
+    margin: 0.5cm;
+    border: solid black;
+}
+
+img.flipped {
+    max-width: 100%;
+    max-height: 100%;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.checked {
+    color: orange;
+}
+
+div.gefahren {
+    width: 100%;
+    display: flex;
+}
+
+div.gefahren_pic {
+    width: auto;
+    margin: 2px;
+}
+
+img.gefahren_pic {
+    max-width: 50px;
+    max-height: 50px;
+}
+
