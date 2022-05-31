@@ -6,5 +6,5 @@ kgs documentation tool
 
 ## Karten / Geo Informationen
 
-## Geböude Pläne erstellen
+## Gebäude Pläne erstellen
 
